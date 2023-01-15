@@ -1,19 +1,19 @@
 <script>
-import { store } from "../store";
-
 export default {
   name: "MovieCard",
+  props: ["title", "originalTitle", "lang", "vote"], //Ricevo i props
   data() {
-    return {
-      store,
-    };
+    return {};
   },
 };
 </script>
 
 <template>
-  <div v-for="movie in store.movies">
-    <h1>{{ movie.id }}</h1>
+  <div class="card">
+    <h2>{{ title }}</h2>
+    <p>{{ originalTitle }}</p>
+    <p>{{ lang }}</p>
+    <p>{{ vote }}</p>
   </div>
 </template>
 

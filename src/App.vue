@@ -17,10 +17,11 @@ export default {
     return {
       store,
       apiURI:
-        "https://api.themoviedb.org/3/movie/550?api_key=d6632532f354537ddbd1e734979a4b52",
+        "https://api.themoviedb.org/3/search/movie?api_key=d6632532f354537ddbd1e734979a4b52",
     };
   },
 
+  //MILESTONE 1 - RICERCA FILM
   methods: {
     //Filtro la ricerca sul valore inserito
     searchContent(value) {
@@ -31,15 +32,15 @@ export default {
           },
         })
         .then((response) => {
-          this.store.movies = response.results;
+          this.store.movies = response.data.results;
           console.log(this.store.movies);
         });
     },
   },
 
-  created() {
-    this.searchContent("");
-  },
+  // created() {
+  //   this.searchContent("");
+  // },
 };
 </script>
 
