@@ -7,13 +7,11 @@ import { store } from "./store.js";
 //Importo i Componenti figli
 import HeaderApp from "./components/HeaderApp.vue";
 import MainApp from "./components/MainApp.vue";
-import MovieCard from "./components/MovieCard.vue";
 
 export default {
   components: {
     HeaderApp,
     MainApp,
-    MovieCard,
   },
   data() {
     return {
