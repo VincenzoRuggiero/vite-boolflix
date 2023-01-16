@@ -16,24 +16,54 @@ export default {
   data() {
     return {
       store,
-      apiURI:
-        "https://api.themoviedb.org/3/search/movie?api_key=d6632532f354537ddbd1e734979a4b52",
+      apiKey: "d6632532f354537ddbd1e734979a4b52",
+      moviesApi: "https://api.themoviedb.org/3/search/movie",
+      seriesApi: "https://api.themoviedb.org/3/search/tv",
     };
   },
 
-  //MILESTONE 1 - RICERCA FILM
   methods: {
+    //MILESTONE 1 - RICERCA FILM
     //Filtro la ricerca sul valore inserito
+    // searchContent(value) {
+    //   axios
+    //     .get(this.moviesApi, {
+    //       params: {
+    //         api_key: this.apiKey,
+    //         query: value,
+    //       },
+    //     })
+    //     .then((response) => {
+    //       this.store.moviesList = response.data.results;
+    //       console.log(this.store.moviesList);
+    //     });
+    // },
+
+    //MILESTONE 2 - Ricerca Film e Serie Tv
     searchContent(value) {
+      const movieResponse = axios.get(this.moviesApi, {
+        params: {
+          api_key: this.apiKey,
+          query: value,
+        },
+      });
+      const seriesResponse = axios.get(this.seriesApi, {
+        params: {
+          api_key: this.apiKey,
+          query: value,
+        },
+      });
+
       axios
-        .get(this.apiURI, {
-          params: {
-            query: value,
-          },
-        })
-        .then((response) => {
-          this.store.movies = response.data.results;
-          console.log(this.store.movies);
+        .all([movieResponse, seriesResponse])
+        .then(
+          axios.spread((...responses) => {
+            this.store.moviesList = responses[0].data.results;
+            this.store.seriesList = responses[1].data.results;
+          })
+        )
+        .catch((errors) => {
+          console.log(errors);
         });
     },
   },
