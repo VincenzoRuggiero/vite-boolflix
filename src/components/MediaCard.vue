@@ -3,7 +3,7 @@ import { store } from "../store";
 
 export default {
   name: "MediaCard",
-  props: ["title", "originalTitle", "lang", "vote"], //Ricevo i props
+  props: ["title", "originalTitle", "lang", "vote", "poster"], //Ricevo i props
   data() {
     return {
       store,
@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     getImagePath(image) {
-      return new URL(`../assets/images/${image}`, import.meta.url).href; //Funzione che imposta la bandiera in base alla lingua originale del contenuto
+      return new URL(`../assets/images/${image}`, import.meta.url).href; //Funzione che imposta la bandiera in base alla lingua originale del contenuto.
     },
   },
 };
@@ -20,6 +20,7 @@ export default {
 
 <template>
   <div class="card">
+    <img :src="poster" :alt="title" />
     <h2>{{ title }}</h2>
     <p>{{ originalTitle }}</p>
     <p>Lingua originale:</p>
