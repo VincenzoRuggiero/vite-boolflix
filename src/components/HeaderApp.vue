@@ -3,7 +3,7 @@ export default {
   name: "HeaderApp",
   data() {
     return {
-      userInput: "",
+      userSearch: "",
     };
   },
 };
@@ -12,8 +12,8 @@ export default {
 <template>
   <!-- Ottengo il dato da cercare dall'input che sarà girato all'api grazie ad un Emit -->
   <div>
-    <input type="text" v-model="userInput" />
-    <button @click="$emit('search', userInput)">Cerca</button>
+    <input type="text" v-model="userSearch" />
+    <button @click="$emit('search', userSearch)">Cerca</button>
   </div>
 </template>
 

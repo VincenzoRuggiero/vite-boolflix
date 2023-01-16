@@ -19,7 +19,7 @@ export default {
 <template>
   <!-- Le card vengono generate dinamicamente con i dati dello store -->
   <div class="cards-wrapper">
-    <div class="cards" v-for="show in store.movies">
+    <div class="cards" v-for="show in store.moviesList">
       <!-- Uso i Props per mandare i dati al componente figlio -->
       <MovieCard
         :title="show.title"
