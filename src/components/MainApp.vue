@@ -1,11 +1,11 @@
 <script>
 import { store } from "../store";
-import MovieCard from "./MovieCard.vue";
+import MediaCard from "./MediaCard.vue";
 
 export default {
   name: "MainApp",
   components: {
-    MovieCard,
+    MediaCard,
   },
 
   data() {
@@ -21,9 +21,17 @@ export default {
   <div class="cards-wrapper">
     <div class="cards" v-for="show in store.moviesList">
       <!-- Uso i Props per mandare i dati al componente figlio -->
-      <MovieCard
+      <MediaCard
         :title="show.title"
         :originalTitle="show.original_title"
+        :lang="show.original_language"
+        :vote="show.vote_average" />
+    </div>
+    <div class="cards" v-for="show in store.seriesList">
+      <!-- Uso i Props per mandare i dati al componente figlio -->
+      <MediaCard
+        :title="show.name"
+        :originalTitle="show.name"
         :lang="show.original_language"
         :vote="show.vote_average" />
     </div>
