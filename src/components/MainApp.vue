@@ -11,8 +11,13 @@ export default {
   data() {
     return {
       store,
-      basePosterUrl: "https://image.tmdb.org/t/p/w300", //MILESTONE 3 - Copertine di Film e Serie Tv
+      basePosterUrl: "https://image.tmdb.org/t/p/w342", //MILESTONE 3 - Copertine di Film e Serie Tv
     };
+  },
+  methods: {
+    getVote(element) {
+      return Math.ceil(element / 2);
+    },
   },
 };
 </script>
@@ -27,7 +32,7 @@ export default {
         :title="show.title"
         :originalTitle="show.original_title"
         :lang="show.original_language"
-        :vote="show.vote_average" />
+        :vote="getVote(show.vote_average)" />
     </div>
 
     <div class="cards" v-for="show in store.seriesList">
@@ -37,7 +42,7 @@ export default {
         :title="show.name"
         :originalTitle="show.name"
         :lang="show.original_language"
-        :vote="show.vote_average" />
+        :vote="getVote(show.vote_average)" />
     </div>
   </div>
 </template>
