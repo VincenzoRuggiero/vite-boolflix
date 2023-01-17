@@ -21,7 +21,10 @@ export default {
 <template>
   <div class="card">
     <img :src="poster" :alt="title" />
-    <h2>{{ title }}</h2>
+    <h2>
+      {{ title }}
+    </h2>
+
     <p>{{ originalTitle }}</p>
     <p>Lingua originale:</p>
     <img
@@ -29,7 +32,9 @@ export default {
       :alt="`${lang} flag`"
       v-if="flags.includes(lang)" />
     <p v-else>{{ lang }}</p>
-    <p>{{ vote }}</p>
+
+    <!-- Mostro le stelle in base al voto medio -->
+    <fa v-for="i in vote" :key="i" icon="fa-star fa-solid" />
   </div>
 </template>
 
